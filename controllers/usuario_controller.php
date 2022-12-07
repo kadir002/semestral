@@ -172,13 +172,13 @@ class usuario_controller
             $obj = new usuario();
             $obj->setUsuario($_POST["txtUsuario"]);
             $obj->setPassword($_POST["txtPassword"]);
-            $resultado= [];
+            $resultado = $obj->valida_usuario();
 
             if (count($resultado) > 0) {
-                // if ($resultado->status == "0") {
-                //     header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=El usuario todavía no ha confirmado el correo");
-                //     exit();
-                // }
+                if ($resultado->status == "0") {
+                    header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=El usuario todavía no ha confirmado el correo");
+                    exit();
+                }
                 $_SESSION["nombre_contacto"] =  $resultado["nombre_contacto"];
                 $_SESSION["usuario"] = $resultado["usuario"];
                 $_SESSION["correo"] = $resultado["correo"];
