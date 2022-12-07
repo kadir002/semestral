@@ -8,10 +8,11 @@
                 $_SESSION["usurio"]=seg::decodificar($_COOKIE["usurio"]);
             }
             $titulo ="Pagina Principal ";
-            require_once("views/template/header.php");
-            require_once("views/template/navbar.php");
-            require_once("views/principal/index.php");
-            require_once("views/template/footer.php");
+            // require_once("views/template/header.php");
+            // require_once("views/template/navbar.php");
+            // require_once("views/principal/index.php");
+            // require_once("views/template/footer.php");
+            phpinfo();
         }  
         
         public static function error(){
