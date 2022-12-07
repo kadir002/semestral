@@ -13,7 +13,7 @@
             // require_once("views/template/navbar.php");
             // require_once("views/principal/index.php");
             // require_once("views/template/footer.php");
-            // phpinfo();
+            phpinfo();
             $conexion = bd::connection();
             $coleccion = $conexion->test;
  
