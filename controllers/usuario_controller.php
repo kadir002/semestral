@@ -164,38 +164,38 @@ class usuario_controller
 
     public static function validar_usuario()
     {
-        // if ($_POST) {
-        //     if (!isset($_POST["token"]) ||  !seg::validaSession($_POST["token"])) {
-        //         echo "Acceso restringido";
-        //         exit();
-        //     }
-        //     $obj = new usuario();
-        //     $obj->setUsuario($_POST["txtUsuario"]);
-        //     $obj->setPassword($_POST["txtPassword"]);
-        //     $resultado = $obj->valida_usuario();
+        if ($_POST) {
+            if (!isset($_POST["token"]) ||  !seg::validaSession($_POST["token"])) {
+                echo "Acceso restringido";
+                exit();
+            }
+            $obj = new usuario();
+            $obj->setUsuario($_POST["txtUsuario"]);
+            $obj->setPassword($_POST["txtPassword"]);
+            $resultado= [];
 
-        //     if (count($resultado) > 0) {
-        //         if ($resultado->status == "0") {
-        //             header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=El usuario todavía no ha confirmado el correo");
-        //             exit();
-        //         }
-        //         $_SESSION["nombre_contacto"] =  $resultado["nombre_contacto"];
-        //         $_SESSION["usuario"] = $resultado["usuario"];
-        //         $_SESSION["correo"] = $resultado["correo"];
-        //         $_SESSION["id_usuario"] = $resultado["_id"];
-        //         $_SESSION["monto_pago"] = $resultado["monto_pago"];
-        //         $_SESSION["cuenta_paypal"] = $resultado["cuenta_paypal"];
-        //         $_SESSION["logo_empresa"] = $resultado["logo_empresa"];
-        //         $_SESSION["logo_banner"]=$resultado["imagen_fondo"];
-        //         $_SESSION["tipo_usuario"] = $resultado["tipo_usuario"];
-        //         if (isset($_POST["chkRecordar"])) {
-        //             setcookie(seg::codificar("nombre"),  seg::codificar($resultado["nombre"]), time() + 40);
-        //             setcookie(seg::codificar("usuario"),  seg::codificar($resultado["usuario"]), time() + 40);
-        //         }
+            if (count($resultado) > 0) {
+                // if ($resultado->status == "0") {
+                //     header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=El usuario todavía no ha confirmado el correo");
+                //     exit();
+                // }
+                $_SESSION["nombre_contacto"] =  $resultado["nombre_contacto"];
+                $_SESSION["usuario"] = $resultado["usuario"];
+                $_SESSION["correo"] = $resultado["correo"];
+                $_SESSION["id_usuario"] = $resultado["_id"];
+                $_SESSION["monto_pago"] = $resultado["monto_pago"];
+                $_SESSION["cuenta_paypal"] = $resultado["cuenta_paypal"];
+                $_SESSION["logo_empresa"] = $resultado["logo_empresa"];
+                $_SESSION["logo_banner"]=$resultado["imagen_fondo"];
+                $_SESSION["tipo_usuario"] = $resultado["tipo_usuario"];
+                if (isset($_POST["chkRecordar"])) {
+                    setcookie(seg::codificar("nombre"),  seg::codificar($resultado["nombre"]), time() + 40);
+                    setcookie(seg::codificar("usuario"),  seg::codificar($resultado["usuario"]), time() + 40);
+                }
                 header("location:index.php");
-        //     } else
-        //         header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=Usuario o Contraseña incorrectos");
-        // }
+            } else
+                header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=Usuario o Contraseña incorrectos");
+        }
     }
 
     public static function cerrar_sesion()
