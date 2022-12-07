@@ -60,7 +60,7 @@ class usuario
         $coleccion = $conexion->usuario;
         try {
             $resultados = $coleccion->updateOne(
-                ["_id" => new MongoDB\BSON\ObjectId($this->id)],
+                // ["_id" => new MongoDB\BSON\ObjectId($this->id)],
                 ['$set' => [
                     "correo" => $this->correo,
                     "nombre_contacto" => $this->nombre_contacto,
@@ -98,7 +98,7 @@ class usuario
         $coleccion = $conexion->usuario;
         try {
             $resultados = $coleccion->updateOne(
-                ["_id" => new MongoDB\BSON\ObjectId($this->id)],
+                // ["_id" => new MongoDB\BSON\ObjectId($this->id)],
                 ['$set' => [
                     "status" => 1
                 ]]
@@ -130,8 +130,8 @@ class usuario
     {
         $conexion = bd::connection();
         $coleccion = $conexion->usuario;
-        $resultado = $coleccion->find(["_id" => new MongoDB\BSON\ObjectId($this->id)]);
-
+        // $resultado = $coleccion->find(["_id" => new MongoDB\BSON\ObjectId($this->id)]);
+$resultado=[];
         foreach ($resultado as $r) {
             return $r;
         }
