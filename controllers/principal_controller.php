@@ -15,9 +15,9 @@
             // require_once("views/template/footer.php");
             // phpinfo();
             $conexion = bd::connection();
-            $coleccion = $conexion->usuario->find([]);
+            // $coleccion = $conexion->usuario->find([]);
  
-            var_dump($coleccion);
+            // var_dump($coleccion);
         }  
         
         public static function error(){
