@@ -1,7 +1,6 @@
 <?php
     require_once("utils/seg.php");
     require_once("utils/bd.php");
-    require_once("models/usuario.php");
     class principal_controller {
         public static function index() {
             if (isset($_COOKIE["usurio"]))
@@ -15,13 +14,10 @@
             // require_once("views/principal/index.php");
             // require_once("views/template/footer.php");
             // phpinfo();
-            $obj = new usuario();
-            $obj->setUsuario("prueba1");
-            $obj->setPassword("123456789");
-            $resultado = $obj->valida_usuario();
-
-            var_dump($resultado);
-           
+            $conexion = bd::connection();
+            $coleccion = $conexion->usuario->find([]);
+ 
+            var_dump($coleccion);
         }  
         
         public static function error(){
