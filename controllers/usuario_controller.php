@@ -62,6 +62,9 @@ class usuario_controller
                 if (isset($resultados)) {
                     utils::enviarcorreo($resultados->getCorreo(), $resultados->getId());
                     header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=Se ha registrado satisfactoriamente <br>Revise su correo para activar la cuenta y continuar con el pago. <br><br>Gracias");
+                  
+                   
+                    
                 } else
                     header("location:" . "index.php?c=" . seg::codificar("principal") . "&m=" . seg::codificar("mensaje") . "&msg=No se pudo registrar, intentelo nuevamente!");
             }
@@ -90,6 +93,11 @@ class usuario_controller
             } else {
                 $foto = utils::subir_archivo($_FILES["imgLogo"]["tmp_name"], $_FILES["imgLogo"]["name"], "uploads");
                 $imageFondo = utils::subir_archivo($_FILES["imgFondo"]["tmp_name"], $_FILES["imgFondo"]["name"], "uploads");
+                empty($foto)?"":$_SESSION["logo_banner"]=$foto;
+                empty($imageFondo)?"":$_SESSION["logo_empresa"]=$imageFondo;
+
+              
+
                 $correo = filter_var($correo, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $nombre_contacto = filter_var($nombre_contacto, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $nombre_empresa = filter_var($nombre_empresa, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
